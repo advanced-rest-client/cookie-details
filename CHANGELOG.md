@@ -1,3 +1,13 @@
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/advanced-rest-client/cookie-details/compare/0.1.1...0.1.2) (2017-10-20)
+
+
+### Fix
+
+* Fixing misspell ([ecf4fada35e75109c4404760076814fb7bfb168d](https://github.com/advanced-rest-client/cookie-details/commit/ecf4fada35e75109c4404760076814fb7bfb168d))
+
+
+
 <a name="0.1.1"></a>
 ## 0.1.1 (2017-10-20)
 
