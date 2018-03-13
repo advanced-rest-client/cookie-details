@@ -11,32 +11,14 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
 -->
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../date-time/date-time.html">
 <link rel="import" href="../arc-icons/arc-icons.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
-<!--
-`<cookie-details>` A cookie details view
 
-### Example
-```
-<cookie-details></cookie-details>
-```
-
-### Styling
-`<cookie-details>` provides the following custom properties and mixins for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--cookie-details` | Mixin applied to the element | `{}`
-
-@group UI Elements
-@element cookie-details
-@demo demo/index.html
--->
 <dom-module id="cookie-details">
   <template>
     <style>
@@ -135,36 +117,53 @@ Custom property | Description | Default
     </div>
   </template>
   <script>
-  Polymer({
-    is: 'cookie-details',
-    behaviors: [
-      Polymer.IronResizableBehavior
-    ],
-    properties: {
-      // A cookie to display
-      cookie: Object
-    },
+  /**
+   * A cookie details view.
+   *
+   * @customElement
+   * @polymer
+   * @demo demo/index.html
+   * @memberof UiElements
+   * @appliesMixin Polymer.IronResizableBehavior
+   */
+  class CookieDetails extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
+    static get is() { return 'cookie-details'; }
+    static get properties() {
+      return {
+        // A cookie to render
+        cookie: Object
+      };
+    }
+
     /**
      * Sends non-bubbling `delete-cookie` event to the parent element to perform
      * delete action.
      */
-    _deleteCookie: function() {
-      this.fire('delete-cookie', {
-        cookie: this.cookie
-      }, {
-        bubbles: false
+    _deleteCookie() {
+      const ev = new CustomEvent('delete-cookie', {
+        detail: {
+          cookie: this.cookie
+        },
+        cancelable: true,
+        bubbles: false,
+        composed: false
       });
-    },
+      this.dispatchEvent(ev);
+    }
     /**
      * Sends non-bubbling `edit-cookie` event to the parent element to perform
      * edit action.
      */
-    _editCookie: function() {
-      this.fire('edit-cookie', {
-        cookie: this.cookie
-      }, {
-        bubbles: false
+    _editCookie() {
+      const ev = new CustomEvent('edit-cookie', {
+        detail: {
+          cookie: this.cookie
+        },
+        cancelable: true,
+        bubbles: false,
+        composed: false
       });
+      this.dispatchEvent(ev);
     }
     /**
      * Fired when the user click on the "edit" action button.
@@ -182,6 +181,7 @@ Custom property | Description | Default
      * @event delete-cookie
      * @param {Object} cookie The cookie object
      */
-  });
+  }
+  window.customElements.define(CookieDetails.is, CookieDetails);
   </script>
 </dom-module>
