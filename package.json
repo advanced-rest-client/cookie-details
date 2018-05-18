@@ -1,11 +1,10 @@
 {
-  "name": "@api-components/cookie-details",
-  "version": "2.0.0",
+  "name": "@advanced-rest-client/cookie-details",
+  "version": "2.0.1",
   "license": "Apache-2.0",
   "description": "A cookie details view",
   "devDependencies": {
-    "@polymer/gen-typescript-declarations": "^1.1.1",
-    "bower": "^1.8.0"
+    "@polymer/gen-typescript-declarations": "^1.1.1"
   },
   "private": false,
   "main": "cookie-details.html",
@@ -14,9 +13,9 @@
     "The Advanced REST client authors <arc@mulesoft.com>"
   ],
   "scripts": {
-    "lint": "node_modules/.bin/polymer lint cookie-details.html",
-    "test-sauce": "node_modules/.bin/polymer test --plugin sauce --job-name \"cookie-details:local-test\"",
-    "test": "node_modules/.bin/polymer test --plugin local",
+    "lint": "polymer lint cookie-details.html",
+    "test-sauce": "polymer test --plugin sauce --job-name \"cookie-details:local-test\"",
+    "test": "polymer test --plugin local",
     "update-types": "gen-typescript-declarations --deleteExisting --outDir ."
   },
   "repository": {
