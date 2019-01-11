@@ -1,4 +1,14 @@
 <a name="2.0.1"></a>
+## [2.0.1](https://github.com/advanced-rest-client/cookie-details/compare/2.0.0-preview...2.0.1) (2019-01-11)
+
+
+### Fix
+
+* Removing security vulnerabilities ([cef56bc55c4a2f9693464ea88e80ccce98ecee76](https://github.com/advanced-rest-client/cookie-details/commit/cef56bc55c4a2f9693464ea88e80ccce98ecee76))
+
+
+
+<a name="2.0.1"></a>
 ## [2.0.1](https://github.com/advanced-rest-client/cookie-details/compare/1.0.0...2.0.1) (2018-05-18)
 
 
