@@ -1,43 +1,19 @@
-<!DOCTYPE html><!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><html><head>
+<!DOCTYPE html>
+<html>
+
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-
   <title>cookie-details demo</title>
-
   <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
   <script type="module" src="../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
   <script type="module" src="../../../@polymer/paper-toast/paper-toast.js"></script>
-  <script type="module" src="../../../arc-data-generator/arc-data-generator.js"></script>
+  <script type="module" src="../../../@advanced-rest-client/arc-electron-default-theme/arc-electron-default-theme.js"></script>
   <script type="module" src="../cookie-details.js"></script>
-
-  <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<custom-style>
+  <custom-style>
     <style is="custom-style" include="demo-pages-shared-styles">
-    :root {
-      --primary-color: #00A2DF;
-      --arc-font-headline: {
-        @apply --paper-font-headline;
-      };
-      --arc-font-body1: {
-        @apply --paper-font-body1;
-      }
-      --arc-font-common-nowrap: {
-        @apply --paper-font-common-nowrap;
-      }
-    }
-
-    body,
+      body,
     html {
       background-color: #e5e5e5;
     }
@@ -47,22 +23,17 @@ $_documentContainer.innerHTML = `<custom-style>
     }
 
     section[card] {
-      @apply(--shadow-elevation-4dp);
+      @apply --shadow-elevation-4dp;
       padding: 20px;
       background: white;
       margin-bottom: 40px;
     }
     </style>
-  </custom-style>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
+  </custom-style>
 </head>
-<body unresolved="">
-  <script type="module">
-const $_documentContainer = document.createElement('template');
 
-$_documentContainer.innerHTML = `<dom-bind id="app">
+<body unresolved="">
+  <dom-bind id="app">
     <template is="dom-bind">
       <div class="vertical-section-container centered">
         <section card="">
@@ -72,31 +43,24 @@ $_documentContainer.innerHTML = `<dom-bind id="app">
       <paper-toast id="deleteToast" text="Delete request event handled"></paper-toast>
       <paper-toast id="editToast" text="Edit request event handled"></paper-toast>
     </template>
-  </dom-bind>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
+  </dom-bind>
   <script type="module">
-import '../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-import '../../../@polymer/paper-toast/paper-toast.js';
-import '../../../arc-data-generator/arc-data-generator.js';
-import '../cookie-details.js';
-/* global DataGenerator */
-var app = document.querySelector('#app');
-app.load();
-app.load = () => {
-  var data = DataGenerator.generateCookiesData({
-    size: 1
-  });
-  app.cookie = data[0];
-};
-app._onEdit = function() {
-  document.getElementById('editToast').opened = true;
-};
-app._onDelete = function() {
-  document.getElementById('deleteToast').opened = true;
-};
-</script>
+    import {DataGenerator} from '../../../@advanced-rest-client/arc-data-generator/arc-data-generator.js';
+    const app = document.querySelector('#app');
+    app.load = () => {
+      const data = DataGenerator.generateCookiesData({
+        size: 1
+      });
+      app.cookie = data[0];
+    };
+    app._onEdit = function() {
+      document.getElementById('editToast').opened = true;
+    };
+    app._onDelete = function() {
+      document.getElementById('deleteToast').opened = true;
+    };
+    app.load();
+  </script>
+</body>
 
-
-</body></html>
+</html>

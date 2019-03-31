@@ -4,371 +4,50 @@
     {
       "description": "A cookie details view.",
       "summary": "",
-      "path": "cookie-details.html",
+      "path": "cookie-details.js",
       "properties": [
         {
-          "name": "_parentResizable",
-          "type": "Object",
-          "description": "The closest ancestor element that implements `IronResizableBehavior`.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 36,
-              "column": 6
-            },
-            "end": {
-              "line": 39,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_parentResizableChanged\""
-            }
-          },
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "_notifyingDescendant",
-          "type": "boolean",
-          "description": "True if this element is currently notifying its descendant elements of\nresize.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 45,
-              "column": 6
-            },
-            "end": {
-              "line": 48,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
           "name": "cookie",
-          "type": "Object",
+          "type": "Object | null | undefined",
           "description": "A cookie to render",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 133,
-              "column": 8
+              "line": 152,
+              "column": 6
             },
             "end": {
-              "line": 133,
-              "column": 22
+              "line": 152,
+              "column": 20
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "Object"
+            }
           }
         }
       ],
       "methods": [
-        {
-          "name": "created",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 55,
-              "column": 4
-            },
-            "end": {
-              "line": 60,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "attached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 62,
-              "column": 4
-            },
-            "end": {
-              "line": 64,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "detached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 66,
-              "column": 4
-            },
-            "end": {
-              "line": 74,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "notifyResize",
-          "description": "Can be called to manually notify a resizable and its descendant\nresizables of a resize change.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 80,
-              "column": 4
-            },
-            "end": {
-              "line": 92,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "assignParentResizable",
-          "description": "Used to assign the closest resizable ancestor to this resizable\nif the ancestor detects a request for notifications.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 98,
-              "column": 4
-            },
-            "end": {
-              "line": 100,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "parentResizable"
-            }
-          ],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "stopResizeNotificationsFor",
-          "description": "Used to remove a resizable descendant from the list of descendants\nthat should be notified of a resize change.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 106,
-              "column": 4
-            },
-            "end": {
-              "line": 113,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "target"
-            }
-          ],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "resizerShouldNotify",
-          "description": "This method can be overridden to filter nested elements that should or\nshould not be notified by the current element. Return true if an element\nshould be notified, or false if it should not be notified.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 124,
-              "column": 4
-            },
-            "end": {
-              "line": 124,
-              "column": 59
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "element",
-              "type": "HTMLElement",
-              "description": "A candidate descendant element that\nimplements `IronResizableBehavior`."
-            }
-          ],
-          "return": {
-            "type": "boolean",
-            "desc": "True if the `element` should be notified of resize."
-          },
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "_onDescendantIronResize",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 126,
-              "column": 4
-            },
-            "end": {
-              "line": 138,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event"
-            }
-          ],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "_fireResize",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 140,
-              "column": 4
-            },
-            "end": {
-              "line": 145,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "_onIronRequestResizeNotifications",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 147,
-              "column": 4
-            },
-            "end": {
-              "line": 162,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event"
-            }
-          ],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "_parentResizableChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 164,
-              "column": 4
-            },
-            "end": {
-              "line": 168,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "parentResizable"
-            }
-          ],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "_notifyDescendant",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 170,
-              "column": 4
-            },
-            "end": {
-              "line": 181,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "descendant"
-            }
-          ],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
-        {
-          "name": "_requestResizeNotifications",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-            "start": {
-              "line": 183,
-              "column": 4
-            },
-            "end": {
-              "line": 211,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Polymer.IronResizableBehavior"
-        },
         {
           "name": "_deleteCookie",
           "description": "Sends non-bubbling `delete-cookie` event to the parent element to perform\ndelete action.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 141,
-              "column": 4
+              "line": 160,
+              "column": 2
             },
             "end": {
-              "line": 151,
-              "column": 5
+              "line": 170,
+              "column": 3
             }
           },
           "metadata": {},
-          "params": []
+          "params": [],
+          "return": {
+            "type": "void"
+          }
         },
         {
           "name": "_editCookie",
@@ -376,16 +55,19 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 156,
-              "column": 4
+              "line": 175,
+              "column": 2
             },
             "end": {
-              "line": 166,
-              "column": 5
+              "line": 185,
+              "column": 3
             }
           },
           "metadata": {},
-          "params": []
+          "params": [],
+          "return": {
+            "type": "void"
+          }
         }
       ],
       "staticMethods": [],
@@ -398,12 +80,12 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 128,
-          "column": 2
+          "line": 30,
+          "column": 0
         },
         "end": {
-          "line": 183,
-          "column": 3
+          "line": 202,
+          "column": 1
         }
       },
       "privacy": "public",
@@ -415,29 +97,29 @@
           "description": "A cookie to render",
           "sourceRange": {
             "start": {
-              "line": 133,
-              "column": 8
+              "line": 152,
+              "column": 6
             },
             "end": {
-              "line": 133,
-              "column": 22
+              "line": 152,
+              "column": 20
             }
           },
           "metadata": {},
-          "type": "Object"
+          "type": "Object | null | undefined"
         }
       ],
       "events": [
         {
           "type": "CustomEvent",
           "name": "delete-cookie",
-          "description": "delete-cookie",
+          "description": "Fired when the user click on the \"delete\" action button.\n\nThis event does not bubbles.",
           "metadata": {}
         },
         {
           "type": "CustomEvent",
           "name": "edit-cookie",
-          "description": "edit-cookie",
+          "description": "Fired when the user click on the \"edit\" action button.\n\nThis event does not bubbles.",
           "metadata": {}
         }
       ],
@@ -446,10 +128,7 @@
         "selectors": []
       },
       "slots": [],
-      "tagname": "cookie-details",
-      "mixins": [
-        "Polymer.IronResizableBehavior"
-      ]
+      "tagname": "cookie-details"
     }
   ]
 }
