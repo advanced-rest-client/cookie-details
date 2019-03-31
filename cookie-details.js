@@ -1,4 +1,4 @@
-<!--
+/**
 @license
 Copyright 2016 The Advanced REST client authors <arc@mulesoft.com>
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -10,17 +10,29 @@ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
--->
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../date-time/date-time.html">
-<link rel="import" href="../arc-icons/arc-icons.html">
-<link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../iron-icon/iron-icon.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+*/
+import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
 
-<dom-module id="cookie-details">
-  <template>
+import '../../date-time/date-time.js';
+import '../../arc-icons/arc-icons.js';
+import '../../@polymer/paper-button/paper-button.js';
+import '../../@polymer/iron-icon/iron-icon.js';
+import '../../@polymer/iron-flex-layout/iron-flex-layout.js';
+import { IronResizableBehavior } from '../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js';
+import { html } from '../../@polymer/polymer/lib/utils/html-tag.js';
+import { mixinBehaviors } from '../../@polymer/polymer/lib/legacy/class.js';
+/**
+ * A cookie details view.
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ * @memberof UiElements
+ * @appliesMixin Polymer.IronResizableBehavior
+ */
+class CookieDetails extends mixinBehaviors(IronResizableBehavior, PolymerElement) {
+  static get template() {
+    return html`
     <style>
     :host {
       display: block;
@@ -110,78 +122,67 @@ the License.
         <iron-icon icon="arc:delete"></iron-icon>
         Delete
       </paper-button>
-      <paper-button raised on-tap="_editCookie" data-action="edit-action">
+      <paper-button raised="" on-tap="_editCookie" data-action="edit-action">
         <iron-icon icon="arc:edit"></iron-icon>
         Edit
       </paper-button>
     </div>
-  </template>
-  <script>
-  /**
-   * A cookie details view.
-   *
-   * @customElement
-   * @polymer
-   * @demo demo/index.html
-   * @memberof UiElements
-   * @appliesMixin Polymer.IronResizableBehavior
-   */
-  class CookieDetails extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
-    static get is() { return 'cookie-details'; }
-    static get properties() {
-      return {
-        // A cookie to render
-        cookie: Object
-      };
-    }
-
-    /**
-     * Sends non-bubbling `delete-cookie` event to the parent element to perform
-     * delete action.
-     */
-    _deleteCookie() {
-      const ev = new CustomEvent('delete-cookie', {
-        detail: {
-          cookie: this.cookie
-        },
-        cancelable: true,
-        bubbles: false,
-        composed: false
-      });
-      this.dispatchEvent(ev);
-    }
-    /**
-     * Sends non-bubbling `edit-cookie` event to the parent element to perform
-     * edit action.
-     */
-    _editCookie() {
-      const ev = new CustomEvent('edit-cookie', {
-        detail: {
-          cookie: this.cookie
-        },
-        cancelable: true,
-        bubbles: false,
-        composed: false
-      });
-      this.dispatchEvent(ev);
-    }
-    /**
-     * Fired when the user click on the "edit" action button.
-     *
-     * This event does not bubbles.
-     *
-     * @event edit-cookie
-     * @param {Object} cookie The cookie object
-     */
-    /**
-     * Fired when the user click on the "delete" action button.
-     *
-     * This event does not bubbles.
-     *
-     * @event delete-cookie
-     * @param {Object} cookie The cookie object
-     */
+`;
   }
-  window.customElements.define(CookieDetails.is, CookieDetails);
-  </script>
-</dom-module>
+
+  static get is() { return 'cookie-details'; }
+  static get properties() {
+    return {
+      // A cookie to render
+      cookie: Object
+    };
+  }
+
+  /**
+   * Sends non-bubbling `delete-cookie` event to the parent element to perform
+   * delete action.
+   */
+  _deleteCookie() {
+    const ev = new CustomEvent('delete-cookie', {
+      detail: {
+        cookie: this.cookie
+      },
+      cancelable: true,
+      bubbles: false,
+      composed: false
+    });
+    this.dispatchEvent(ev);
+  }
+  /**
+   * Sends non-bubbling `edit-cookie` event to the parent element to perform
+   * edit action.
+   */
+  _editCookie() {
+    const ev = new CustomEvent('edit-cookie', {
+      detail: {
+        cookie: this.cookie
+      },
+      cancelable: true,
+      bubbles: false,
+      composed: false
+    });
+    this.dispatchEvent(ev);
+  }
+  /**
+   * Fired when the user click on the "edit" action button.
+   *
+   * This event does not bubbles.
+   *
+   * @event edit-cookie
+   * @param {Object} cookie The cookie object
+   */
+  /**
+   * Fired when the user click on the "delete" action button.
+   *
+   * This event does not bubbles.
+   *
+   * @event delete-cookie
+   * @param {Object} cookie The cookie object
+   */
+}
+window.customElements.define(CookieDetails.is, CookieDetails);

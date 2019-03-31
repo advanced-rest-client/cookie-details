@@ -13,11 +13,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
-    <link rel="import" href="../../arc-data-generator/arc-data-generator.html">
-    <script src="../../iron-test-helpers/mock-interactions.js"></script>
-    <link rel="import" href="../cookie-details.html">
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../../../wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../../../arc-data-generator/arc-data-generator.js"></script>
+    <script src="../../../@polymer/iron-test-helpers/mock-interactions.js" type="module"></script>
+    <script type="module" src="../cookie-details.js"></script>
   </head>
   <body>
 
@@ -27,7 +27,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </template>
     </test-fixture>
 
-    <script>
+    <script type="module">
+    import '../../../arc-data-generator/arc-data-generator.js';
+    import '../cookie-details.js';
+    import { dom } from '../../../@polymer/polymer/lib/legacy/polymer.dom.js';
     /* global fixture, assert, DataGenerator, MockInteractions */
     suite('basic', function() {
 
@@ -54,7 +57,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           eventData = e.detail;
           assert.isFalse(e.bubbles);
         });
-        var node = Polymer.dom(element.root).querySelector('[data-action="delete-action"]');
+        var node = dom(element.root).querySelector('[data-action="delete-action"]');
         MockInteractions.tap(node);
         assert.typeOf(eventData, 'object');
         assert.deepEqual(eventData.cookie, cookie);
@@ -66,7 +69,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           eventData = e.detail;
           assert.isFalse(e.bubbles);
         });
-        var node = Polymer.dom(element.root).querySelector('[data-action="edit-action"]');
+        var node = dom(element.root).querySelector('[data-action="edit-action"]');
         MockInteractions.tap(node);
         assert.typeOf(eventData, 'object');
         assert.deepEqual(eventData.cookie, cookie);
