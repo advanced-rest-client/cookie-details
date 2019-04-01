@@ -4,7 +4,7 @@
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/advanced-rest-client/cookie-details)
 
-An element to render Coockie object details.
+An element to render cookie object details.
 
 ### Example
 
@@ -29,7 +29,7 @@ npm install --save @advanced-rest-client/cookie-details
 <html>
   <head>
     <script type="module">
-      import './node_odules/@advanced-rest-client/cookie-details/cookie-details.js';
+      import './node_modules/@advanced-rest-client/cookie-details/cookie-details.js';
     </script>
   </head>
   <body>
@@ -41,8 +41,8 @@ npm install --save @advanced-rest-client/cookie-details
 ### In a Polymer 3 element
 
 ```js
-import {PolymerElement, html} from './node_odules/@polymer/polymer';
-import './node_odules/@advanced-rest-client/cookie-details/cookie-details.js';
+import {PolymerElement, html} from './node_modules/@polymer/polymer';
+import './node_modules/@advanced-rest-client/cookie-details/cookie-details.js';
 
 class SampleElement extends PolymerElement {
   static get template() {
