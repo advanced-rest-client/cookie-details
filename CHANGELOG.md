@@ -46,3 +46,7 @@
 
 
 
+# [3.0.0](https://github.com/advanced-rest-client/cookie-details/compare/2.0.0-preview...3.0.0) (2019-09-01)
+
+
+
