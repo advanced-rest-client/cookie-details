@@ -1,66 +1,37 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>cookie-editor</title>
+    <style>
+      [role="main"].centered {
+        max-width: 1440px;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <title>cookie-details demo</title>
-  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-  <script type="module" src="../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-  <script type="module" src="../../../@polymer/paper-toast/paper-toast.js"></script>
-  <script type="module" src="../../../@advanced-rest-client/arc-electron-default-theme/arc-electron-default-theme.js"></script>
-  <script type="module" src="../cookie-details.js"></script>
-  <custom-style>
-    <style is="custom-style" include="demo-pages-shared-styles">
-      body,
-    html {
-      background-color: #e5e5e5;
-    }
+      body.styled {
+        --arc-font-body1-font-size: 1rem;
 
-    .vertical-section-container {
-      max-width: 600px;
-    }
+        --arc-font-headline-font-size: 24px;
+        --arc-font-headline-font-weight: 400;
+        --arc-font-headline-letter-spacing: -.012em;
+        --arc-font-headline-line-height: 32px;
 
-    section[card] {
-      @apply --shadow-elevation-4dp;
-      padding: 20px;
-      background: white;
-      margin-bottom: 40px;
-    }
+        font-size: 15px;
+      }
+
+      body.styled.dark {
+        --secondary-text-color: #616161;
+        --primary-background-color: #424242;
+      }
+
+      cookie-editor {
+        width: 600px;
+      }
     </style>
-  </custom-style>
-</head>
+  </head>
+  <body>
+    <div id="demo"></div>
 
-<body unresolved="">
-  <dom-bind id="app">
-    <template is="dom-bind">
-      <div class="vertical-section-container centered">
-        <section card="">
-          <cookie-details cookie="{{cookie}}" on-edit-cookie="_onEdit" on-delete-cookie="_onDelete"></cookie-details>
-        </section>
-      </div>
-      <paper-toast id="deleteToast" text="Delete request event handled"></paper-toast>
-      <paper-toast id="editToast" text="Edit request event handled"></paper-toast>
-    </template>
-  </dom-bind>
-  <script type="module">
-    import {DataGenerator} from '../../../@advanced-rest-client/arc-data-generator/arc-data-generator.js';
-    const app = document.querySelector('#app');
-    app.load = () => {
-      const data = DataGenerator.generateCookiesData({
-        size: 1
-      });
-      app.cookie = data[0];
-    };
-    app._onEdit = function() {
-      document.getElementById('editToast').opened = true;
-    };
-    app._onDelete = function() {
-      document.getElementById('deleteToast').opened = true;
-    };
-    app.load();
-  </script>
-</body>
-
+    <script type="module" src="index.js"></script>
 </html>

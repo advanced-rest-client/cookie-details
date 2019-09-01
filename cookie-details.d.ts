@@ -10,6 +10,11 @@
 
 
 // tslint:disable:variable-name Describing an API that's defined elsewhere.
+// tslint:disable:no-any describes the API as best we are able today
+
+import {html, css, LitElement} from 'lit-element';
+
+import {ArcResizableMixin} from '@advanced-rest-client/arc-resizable-mixin/arc-resizable-mixin.js';
 
 declare namespace UiElements {
 
@@ -22,6 +27,7 @@ declare namespace UiElements {
      * A cookie to render
      */
     cookie: object|null|undefined;
+    render(): any;
 
     /**
      * Sends non-bubbling `delete-cookie` event to the parent element to perform
@@ -43,5 +49,3 @@ declare global {
     "cookie-details": UiElements.CookieDetails;
   }
 }
-
-export {};

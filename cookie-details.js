@@ -11,28 +11,23 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
 */
-import {PolymerElement} from '../../@polymer/polymer/polymer-element.js';
-import {IronResizableBehavior} from '../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js';
-import {html} from '../../@polymer/polymer/lib/utils/html-tag.js';
-import {mixinBehaviors} from '../../@polymer/polymer/lib/legacy/class.js';
-import '../../@advanced-rest-client/date-time/date-time.js';
-import '../../@advanced-rest-client/arc-icons/arc-icons.js';
-import '../../@polymer/paper-button/paper-button.js';
-import '../../@polymer/iron-icon/iron-icon.js';
+import { html, css, LitElement } from 'lit-element';
+import { ArcResizableMixin } from '@advanced-rest-client/arc-resizable-mixin/arc-resizable-mixin.js';
+import '@advanced-rest-client/date-time/date-time.js';
+import '@advanced-rest-client/arc-icons/arc-icons.js';
+import '@anypoint-web-components/anypoint-button/anypoint-button.js';
+import '@polymer/iron-icon/iron-icon.js';
 /**
  * A cookie details view.
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
  * @memberof UiElements
  * @polymerBehavior IronResizableBehavior
  */
-class CookieDetails extends mixinBehaviors(IronResizableBehavior, PolymerElement) {
-  static get template() {
-    return html`
-    <style>
-    :host {
+class CookieDetails extends ArcResizableMixin(LitElement) {
+  static get styles() {
+    return css`:host {
       display: block;
       font-size: var(--arc-font-body1-font-size);
       font-weight: var(--arc-font-body1-font-weight);
@@ -82,35 +77,37 @@ class CookieDetails extends mixinBehaviors(IronResizableBehavior, PolymerElement
       margin-top: 20px;
     }
 
-    .actions paper-button {
-      color: var(--primary-color);
+    .actions anypoint-button {
       padding-left: 12px;
       padding-right: 12px;
     }
 
-    paper-button iron-icon {
+    anypoint-button iron-icon {
       margin-right: 12px;
-      color: var(--saved-request-detail-action-icon-color, rgba(0, 0, 0, 0.54));
-    }
-    </style>
-    <h2>[[cookie.name]]</h2>
+    }`;
+  }
+
+  render() {
+    const cookie = this.cookie || {};
+    return html`
+    <h2>${cookie.name}</h2>
     <div class="meta-row lh">
       <span class="label">Value</span>
-      <span class="value">[[cookie.value]]</span>
+      <span class="value">${cookie.value}</span>
     </div>
     <div class="meta-row lh">
       <span class="label">Domain</span>
-      <span class="value">[[cookie.domain]]</span>
+      <span class="value">${cookie.domain}</span>
     </div>
     <div class="meta-row lh">
       <span class="label">Path</span>
-      <span class="value">[[cookie.path]]</span>
+      <span class="value">${cookie.path}</span>
     </div>
     <div class="meta-row lh">
       <span class="label">Expires</span>
       <span class="value">
         <date-time
-          date="[[cookie.expires]]"
+          date="${cookie.expires}"
           year="numeric"
           month="numeric"
           day="numeric"
@@ -120,31 +117,30 @@ class CookieDetails extends mixinBehaviors(IronResizableBehavior, PolymerElement
     </div>
     <div class="meta-row lh">
       <span class="label">Host only</span>
-      <span class="value">[[cookie.hostOnly]]</span>
+      <span class="value">${cookie.hostOnly}</span>
     </div>
     <div class="meta-row lh">
       <span class="label">HTTP only</span>
-      <span class="value">[[cookie.httpOnly]]</span>
+      <span class="value">${cookie.httpOnly}</span>
     </div>
     <div class="meta-row lh">
       <span class="label">Secure</span>
-      <span class="value">[[cookie.secure]]</span>
+      <span class="value">${cookie.secure}</span>
     </div>
     <div class="meta-row lh">
       <span class="label">Session</span>
-      <span class="value">[[cookie.session]]</span>
+      <span class="value">${cookie.session}</span>
     </div>
     <div class="actions lh">
-      <paper-button on-tap="_deleteCookie" data-action="delete-action">
+      <anypoint-button @click="${this._deleteCookie}" data-action="delete-action">
         <iron-icon icon="arc:delete"></iron-icon>
         Delete
-      </paper-button>
-      <paper-button raised="" on-tap="_editCookie" data-action="edit-action">
+      </anypoint-button>
+      <anypoint-button raised="" @click="${this._editCookie}" data-action="edit-action">
         <iron-icon icon="arc:edit"></iron-icon>
         Edit
-      </paper-button>
-    </div>
-`;
+      </anypoint-button>
+    </div>`;
   }
 
   static get properties() {
@@ -159,7 +155,7 @@ class CookieDetails extends mixinBehaviors(IronResizableBehavior, PolymerElement
    * delete action.
    */
   _deleteCookie() {
-    const ev = new CustomEvent('delete-cookie', {
+    const ev = new CustomEvent('delete', {
       detail: {
         cookie: this.cookie
       },
@@ -174,7 +170,7 @@ class CookieDetails extends mixinBehaviors(IronResizableBehavior, PolymerElement
    * edit action.
    */
   _editCookie() {
-    const ev = new CustomEvent('edit-cookie', {
+    const ev = new CustomEvent('edit', {
       detail: {
         cookie: this.cookie
       },

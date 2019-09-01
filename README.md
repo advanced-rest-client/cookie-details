@@ -6,16 +6,6 @@
 
 An element to render cookie object details.
 
-### Example
-
-```html
-<cookie-details></cookie-details>
-```
-
-### API components
-
-This components is a part of [API components ecosystem](https://elements.advancedrestclient.com/)
-
 ## Usage
 
 ### Installation
@@ -38,39 +28,53 @@ npm install --save @advanced-rest-client/cookie-details
 </html>
 ```
 
-### In a Polymer 3 element
+### In a LitElement
 
 ```js
-import {PolymerElement, html} from './node_modules/@polymer/polymer';
-import './node_modules/@advanced-rest-client/cookie-details/cookie-details.js';
+import { LitElement, html } from 'lit-element';
+import '@advanced-rest-client/cookie-details/cookie-details.js';
 
 class SampleElement extends PolymerElement {
-  static get template() {
+  render() {
     return html`
-    <cookie-details></cookie-details>
+    <cookie-details
+      .cookie="${this.cookie}"
+      @delete="${this._cookieDeleteHandler}"
+      @edit="${this._cookieEditHandler}"></cookie-details>
     `;
+  }
+
+  _cookieDeleteHandler(e) {
+    ...
+  }
+
+  _cookieEditHandler(e) {
+    ...
   }
 }
 customElements.define('sample-element', SampleElement);
 ```
 
-### Installation
+## Development
 
 ```sh
 git clone https://github.com/advanced-rest-client/cookie-details
-cd api-url-editor
+cd cookie-details
 npm install
-npm install -g polymer-cli
 ```
+
 
 ### Running the demo locally
 
 ```sh
-polymer serve --npm
-open http://127.0.0.1:<port>/demo/
+npm start
 ```
 
 ### Running the tests
 ```sh
-polymer test --npm
+npm test
 ```
+
+## API components
+
+This components is a part of [API components ecosystem](https://elements.advancedrestclient.com/)
