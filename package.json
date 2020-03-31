@@ -1,7 +1,7 @@
 {
   "name": "@advanced-rest-client/cookie-details",
   "description": "A cookie detail view.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "license": "Apache-2.0",
   "main": "cookie-details.js",
   "keywords": [
